@@ -1,0 +1,108 @@
+## Overview 
+This is a Flask web application that provides text summarization capabilities using the Groq API. Users can upload .txt files, and the application will generate concise summaries while displaying both the original and summarized text on the webpage.
+
+## Core Functionalities 
+* Upload .txt files with support for various text formats
+* Text summarization powered by Groq API
+* Display original and summarized text side by side
+* Error handling for invalid file types and API failures
+* Responsive web interface for optimal viewing experience
+
+## Technical Stack
+* Programming Language: Python 3.8+
+* Web Framework: Flask 2.0+
+* API Integration: Groq API
+* Frontend: HTML5, CSS3, JavaScript
+* Version Control: Git and GitHub
+* IDE: Cursor AI
+* Dependencies Management: pip/requirements.txt
+
+## Project Structure
+```
+project/
+├── app/
+│   ├── __init__.py
+│   ├── routes.py
+│   ├── static/
+│   │   ├── css/
+│   │   └── js/
+│   └── templates/
+│       └── index.html
+├── config.py
+├── requirements.txt
+├── .env
+├── .gitignore
+└── README.md
+```
+
+## Setup Instructions
+
+### Prerequisites
+1. Python 3.8 or higher installed
+2. pip (Python package manager)
+3. Groq API key
+4. Git (for version control)
+
+### Installation Steps
+1. Clone the repository:
+   ```bash
+   git clone [repository-url]
+   cd [project-directory]
+   ```
+
+2. Create and activate a virtual environment:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. Create a .env file in the root directory and add your Groq API key:
+   ```
+   GROQ_API_KEY=your_api_key_here
+   ```
+
+5. Run the application:
+   ```bash
+   flask run
+   ```
+
+### Configuration
+* The application runs on `http://localhost:5000` by default
+* Maximum file size limit: 5MB
+* Supported file types: .txt only
+
+## Development Guidelines
+* Follow PEP 8 style guide for Python code
+* Write meaningful commit messages
+* Create feature branches for new development
+* Update requirements.txt when adding new dependencies
+
+## Testing
+* Run unit tests: `python -m pytest`
+* Test file upload functionality
+* Verify API integration
+* Check responsive design on different devices
+
+## Deployment
+* Ensure all environment variables are properly set
+* Configure production server (e.g., Gunicorn)
+* Set up proper error logging
+* Enable HTTPS for secure connections
+
+## Contributing
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
+
+## License
+[Specify your license here]
+
+## Contact
+[Add contact information or maintainer details]
