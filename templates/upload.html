@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Summarizer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .text-container {
+            max-height: 400px;
+            overflow-y: auto;
+            border: 1px solid #dee2e6;
+            border-radius: 0.25rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        .upload-container {
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="upload-container">
+            <h1 class="text-center mb-4">Text Summarizer</h1>
+            
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-info">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <div class="card">
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="file" class="form-label">Upload Text File (.txt)</label>
+                            <input type="file" class="form-control" id="file" name="file" accept=".txt" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Upload and Summarize</button>
+                    </form>
+                </div>
+            </div>
+
+            {% if original_text %}
+            <div class="mt-4">
+                <h3>Original Text</h3>
+                <div class="text-container">
+                    <p>{{ original_text }}</p>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if summarized_text %}
+            <div class="mt-4">
+                <h3>Summarized Text</h3>
+                <div class="text-container">
+                    <p>{{ summarized_text }}</p>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
