@@ -1,7 +1,9 @@
 import requests 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, flash
+import os
 
 app = Flask(__name__)
+app.secret_key = 'your-secret-key-here'  # Required for flash messages
 
 def summarize_text(text):
     url = "https://api.groq.com/openai/v1/chat/completions"
@@ -21,6 +23,28 @@ def summarize_text(text):
         return response.json()["choices"][0]["message"]["content"]
     else:
         return "Summarization failed."
+
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    if request.method == 'POST':
+        if 'file' not in request.files:
+            flash('No file uploaded')
+            return render_template('upload.html')
+        
+        file = request.files['file']
+        if file.filename == '':
+            flash('No file selected')
+            return render_template('upload.html')
+        
+        if file and file.filename.endswith('.txt'):
+            text = file.read().decode('utf-8')
+            summary = summarize_text(text)
+            return render_template('upload.html', original_text=text, summarized_text=summary)
+        else:
+            flash('Please upload a .txt file')
+            return render_template('upload.html')
+    
+    return render_template('upload.html')
 
 @app.route('/summarize', methods=['POST'])
 def summarize():
