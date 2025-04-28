@@ -14,7 +14,7 @@ This web application leverages artificial intelligence to automatically generate
 ## Tech Stack
 - Frontend: React.js with TypeScript
 - Backend: Python with FastAPI
-- AI Model: OpenAI GPT API
+- AI Model: OpenAI GPT API or Groq API
 - Styling: Tailwind CSS
 - Deployment: Docker containerization
 
@@ -23,7 +23,7 @@ This web application leverages artificial intelligence to automatically generate
 ### Prerequisites
 - Node.js (v16 or higher)
 - Python (v3.8 or higher)
-- OpenAI API key
+- OpenAI API key or Groq API key (Groq is compatible with OpenAI's API)
 
 ### Installation
 1. Clone the repository:
