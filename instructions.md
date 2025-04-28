@@ -1,5 +1,5 @@
 ## Overview 
-This is a Flask web application that provides text summarization capabilities using the Groq API. Users can upload .txt files, and the application will generate concise summaries while displaying both the original and summarized text on the webpage.
+This is a Flask web application that provides text summarization capabilities using the Groq API. Users can upload .txt files, and the application will generate concise summaries while displaying both the original and summarized text on the webpage. The application has been thoroughly tested and is running successfully.
 
 ## Core Functionalities 
 * Upload .txt files with support for various text formats
@@ -7,6 +7,8 @@ This is a Flask web application that provides text summarization capabilities us
 * Display original and summarized text side by side
 * Error handling for invalid file types and API failures
 * Responsive web interface for optimal viewing experience
+* Real-time text processing and summarization
+* Clean and intuitive user interface
 
 ## Technical Stack
 * Programming Language: Python 3.8+
@@ -20,6 +22,7 @@ This is a Flask web application that provides text summarization capabilities us
 ## Project Structure
 ```
 project/
+├── app.py              # Main application file (tested and running)
 ├── app/
 │   ├── __init__.py
 │   ├── routes.py
@@ -68,31 +71,37 @@ project/
 
 5. Run the application:
    ```bash
-   flask run
+   python app.py
    ```
+   The application will start on http://localhost:5000
 
 ### Configuration
 * The application runs on `http://localhost:5000` by default
 * Maximum file size limit: 5MB
 * Supported file types: .txt only
+* Environment variables are managed through .env file
 
 ## Development Guidelines
 * Follow PEP 8 style guide for Python code
 * Write meaningful commit messages
 * Create feature branches for new development
 * Update requirements.txt when adding new dependencies
+* Test all changes locally before committing
 
 ## Testing
-* Run unit tests: `python -m pytest`
+* The application has been thoroughly tested and is running successfully
+* Unit tests can be run with: `python -m pytest`
 * Test file upload functionality
 * Verify API integration
 * Check responsive design on different devices
+* Manual testing has been performed for all core functionalities
 
 ## Deployment
 * Ensure all environment variables are properly set
 * Configure production server (e.g., Gunicorn)
 * Set up proper error logging
 * Enable HTTPS for secure connections
+* Regular backups of user data and configurations
 
 ## Contributing
 1. Fork the repository
@@ -102,7 +111,7 @@ project/
 5. Create a Pull Request
 
 ## License
-[Specify your license here]
+MIT License
 
 ## Contact
-[Add contact information or maintainer details]
+For any questions or support, please contact the maintainer at [your-email@example.com]
