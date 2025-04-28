@@ -12,17 +12,33 @@ def summarize_text(text):
         "Content-Type": "application/json"
     }
     data = {
-        "model": "llama-3-8b-8192",
+        "model": "llama3-8b-8192",
         "messages": [
-            {"role": "user", "content": text}
+            {"role": "user", "content": f"Please summarize the following text: {text}"}
         ],
         "temperature": 0.5
     }
-    response = requests.post(url, headers=headers, json=data)
-    if response.status_code == 200:
-        return response.json()["choices"][0]["message"]["content"]
-    else:
-        return "Summarization failed."
+    try:
+        print("Making API request to Groq...")
+        print(f"Request URL: {url}")
+        print(f"Request Headers: {headers}")
+        print(f"Request Data: {data}")
+        
+        response = requests.post(url, headers=headers, json=data)
+        print(f"Response Status Code: {response.status_code}")
+        print(f"Response Headers: {response.headers}")
+        print(f"Response Body: {response.text}")
+        
+        if response.status_code == 200:
+            return response.json()["choices"][0]["message"]["content"]
+        else:
+            error_message = f"API Error: Status code {response.status_code}, Response: {response.text}"
+            print(error_message)
+            return f"Summarization failed. {error_message}"
+    except Exception as e:
+        error_message = f"Error: {str(e)}"
+        print(error_message)
+        return f"Summarization failed. {error_message}"
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
